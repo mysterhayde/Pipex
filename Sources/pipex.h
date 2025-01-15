@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:07:53 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/14 16:17:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:10:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 #endif 

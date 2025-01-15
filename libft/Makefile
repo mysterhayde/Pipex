@@ -6,7 +6,7 @@
 #    By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 21:12:44 by hdougoud          #+#    #+#              #
-#    Updated: 2024/12/16 14:17:50 by hdougoud         ###   ########.fr        #
+#    Updated: 2024/12/21 21:38:59 by hdougoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ BLUE	= \033[1;34m
 PURPLE	= \033[1;35m
 CYAN	= \033[1;36m
 WHITE	= \033[1;37m
+RESET	= \033[0m
 
 #--------------------------------------RULES-----------------------------------
 
@@ -79,7 +80,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-	echo -e "$(GREEN)Libft done$(WHITE)"
+	echo "$(GREEN)Libft done$(RESET)"
 	
 clean:
 	rm -f $(OBJECTS)
