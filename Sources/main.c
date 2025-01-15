@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:07:38 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/15 19:58:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/15 20:12:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void check_arguments(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
+	
 	check_arguments(argc, argv);
 	return (0);
 }
