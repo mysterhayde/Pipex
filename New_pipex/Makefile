@@ -1,9 +1,10 @@
 NAME	= pipex
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= #-Wall -Werror -Wextra
 
 SRC_DIR	= Sources/
-SRC		= main.c
+SRC		= main.c \
+
 SOURCES	= $(addprefix $(SRC_DIR),$(SRC))
 
 OBJ_DIR	= Objects/
@@ -21,10 +22,11 @@ $(LIBFT):
 	$(MAKE) -C libft
 
 $(OBJ_DIR):
-	@mkdir $(OBJ_DIR)
+	mkdir $(OBJ_DIR)
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -Llibft -lft -o $(NAME)
+	echo "$(GREEN)$(NAME) compiled$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -38,3 +40,5 @@ fclean: clean
 	rm -f libft/libft.a
 
 re: fclean all
+.SILENT:
+.PHONY: all clean fclean re

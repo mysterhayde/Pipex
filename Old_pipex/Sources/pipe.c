@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 16:07:53 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/15 19:10:41 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/01/16 10:21:10 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/01/16 15:16:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-#include "../libft/libft.h"
+void ft_pipe(int argc, char **argv)
+{
+	int fd_1;
+	int	fd_2;
 
-#endif 
+	fd_1 = open(argv[1], O_RDONLY);
+	if (fd_1 == -1)
+		show_errors(CANNOT_ACCES);
+	
+}
