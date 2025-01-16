@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe.c                                             :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 10:21:10 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/16 15:16:09 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/01/16 23:17:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
-void ft_pipe(int argc, char **argv)
+#include "../libft/libft.h"
+
+typedef struct s_path
 {
-	int fd_1;
-	int	fd_2;
+	char	**path;
+	char	**cmd;
+}	t_path;
 
-	fd_1 = open(argv[1], O_RDONLY);
-	if (fd_1 == -1)
-		show_errors(CANNOT_ACCES);
-	
-}
+void	show_error(char *str);
+void	get_binary(t_path *path, int argc, char **argv);
+char	**get_path(char **envp, char **argv, int argc);
+
+#endif 
