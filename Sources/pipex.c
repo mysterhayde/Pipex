@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:21:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/17 16:50:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:15:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	pipex(t_path *path)
 {
 	int	pipe_fd[2];
-	int	pid;
+	pid_t pid;
 
 	if (pipe(pipe_fd) == -1)
 		show_error("cannot create pipe");
 	
+	pid = fork();
+	if (pid == -1)
+		show_error("cannot fork");
+	execve(path->path[0], path->cmd[0], NULL);
 }
