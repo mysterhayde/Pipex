@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/17 15:01:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:11:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ static void	init_struct(t_path *path, int argc, char **argv, char **envp)
 	if (!path->cmd)
 		show_error("Malloc failed");
 	path->cmd[argc - 2] = NULL;
-	path->flag = malloc(sizeof(char *) * (argc - 2)); 
-	if (!path->flag)
-		show_error("Malloc failed");
-	path->flag[argc - 2] = NULL;
 	path->file_1 = argv[1];
 	path->file_2 = argv[argc - 1];
 }
@@ -64,9 +60,13 @@ int main(int argc, char **argv, char **envp)
 	get_binary(&path, argc, argv);
 	
 	int i = 0;
+	int	j = 0;
 	while (path.cmd[i])
 	{
-		printf("%s %s\n", path.cmd[i], path.flag[i]);
+		while(path.cmd[i][j])
+			printf("%s ", path.cmd[i][j++]);
+		printf("\n");
+		j = 0;
 		i++;
 	}
 	pipex(&path);
