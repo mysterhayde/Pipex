@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/17 18:11:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:18:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	init_struct(t_path *path, int argc, char **argv, char **envp)
 	path->cmd = malloc(sizeof(char *) * (argc - 2));
 	if (!path->cmd)
 		show_error("Malloc failed");
-	path->cmd[argc - 2] = NULL;
+	path->cmd[argc - 3] = NULL;
 	path->file_1 = argv[1];
 	path->file_2 = argv[argc - 1];
 }
