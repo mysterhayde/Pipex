@@ -4,7 +4,8 @@ CFLAGS	= #-Wall -Werror -Wextra
 
 SRC_DIR	= Sources/
 SRC		= main.c \
-		  binary.c 
+		  binary.c \
+		  pipex.c	\
 
 SOURCES	= $(addprefix $(SRC_DIR),$(SRC))
 

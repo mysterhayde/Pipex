@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/17 15:00:52 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/01/17 14:21:39 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/01/17 16:50:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "pipex.h"
 
-#include "../libft/libft.h"
-
-typedef struct s_path
+void	pipex(t_path *path)
 {
-	char		**path;
-	char		**cmd;
-	char		**flag;
-	const char	*file_1;
-	const char	*file_2;
-}	t_path;
+	int	pipe_fd[2];
+	int	pid;
 
-void	pipex(t_path *path);
-void	show_error(char *str);
-void	get_binary(t_path *path, int argc, char **argv);
-char	**get_path(char **envp, char **argv, int argc);
-
-#endif 
+	if (pipe(pipe_fd) == -1)
+		show_error("cannot create pipe");
+	
+}
