@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/17 21:18:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:11:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ static void	check_files(int argc, char **argv, t_path *path)
 static void	init_struct(t_path *path, int argc, char **argv, char **envp)
 {
 	path->path = get_path(envp, argv, argc);
+	path->binary = malloc(sizeof(char * ) * argc - 2);
+	if (!path->binary)
+		show_error("Malloc path->binary failed");
+	path->binary[argc - 3] = NULL;
 	path->cmd = malloc(sizeof(char *) * (argc - 2));
 	if (!path->cmd)
-		show_error("Malloc failed");
+		show_error("Malloc path->cmd failed");
 	path->cmd[argc - 3] = NULL;
 	path->file_1 = argv[1];
 	path->file_2 = argv[argc - 1];
@@ -57,7 +61,7 @@ int main(int argc, char **argv, char **envp)
 	}
 	init_struct(&path, argc, argv, envp);
 	check_files(argc, argv, &path);
-	get_binary(&path, argc, argv);
+	get_cmd(&path, argc, argv);
 	
 	int i = 0;
 	int	j = 0;
