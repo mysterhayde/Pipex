@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/20 16:18:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:17:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ typedef struct s_path
 	char		**path;
 	char		***cmd;
 	char		**binary;
+	int			bin;
+	int			fd_1;
+	int			fd_2;
 	const char	*file_1;
 	const char	*file_2;
 }	t_path;

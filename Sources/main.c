@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/20 13:47:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:17:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static void	check_files(int argc, char **argv, t_path *path)
 		show_error("Cannot open input file");
 	if (access(argv[argc - 1], F_OK | W_OK) == -1)
 		show_error("Cannot open output file");
+	path->fd_2 = open("output.txt", O_WRONLY);
+	if (path->fd_2 == -1)
+		show_error("Open fd_2 failed");
+	path->fd_1 = open("input.txt", O_RDONLY);
+	if (path->fd_1 == -1)
+		show_error("Open fd_1 failed");
 }
 
 static void	init_struct(t_path *path, int argc, char **argv, char **envp)
@@ -48,6 +54,9 @@ static void	init_struct(t_path *path, int argc, char **argv, char **envp)
 	path->cmd[argc - 3] = NULL;
 	path->file_1 = argv[1];
 	path->file_2 = argv[argc - 1];
+	path->fd_1 = 0;
+	path->fd_2 = 0;
+	path->bin = 0;
 }
 
 int main(int argc, char **argv, char **envp)
