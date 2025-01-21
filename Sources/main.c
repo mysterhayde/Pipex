@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/21 13:24:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:15:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,13 @@ void	show_error(t_path *path, char *str)
 
 static void	check_files(int argc, char **argv, t_path *path)
 {
-	int		i;
-	int		j;
-	char 	*tmp;
-	char	*cmd;
-
-	i = 0;
-	j = 0;
-	if (access(argv[1], F_OK | R_OK) == -1)
-		show_error(path, "Cannot open input file");
-	if (access(argv[argc - 1], F_OK | W_OK) == -1)
-		show_error(path, "Cannot open output file");
-	path->fd_2 = open("output.txt", O_WRONLY);
-	if (path->fd_2 == -1)
-		show_error(path, "Open fd_2 failed");
-	path->fd_1 = open("input.txt", O_RDONLY);
+	unlink(path->file_2);
+	path->fd_1 = open(path->file_1, O_RDONLY);
 	if (path->fd_1 == -1)
 		show_error(path, "Open fd_1 failed");
+	path->fd_2 = open(path->file_2, O_WRONLY | O_CREAT | O_TRUNC);
+	if (path->fd_2 == -1)
+		show_error(path, "Open fd_2 failed");
 }
 
 static void	init_struct(t_path *path, int argc, char **argv, char **envp)
@@ -97,7 +87,7 @@ int main(int argc, char **argv, char **envp)
 	init_struct(&path, argc, argv, envp);
 	check_files(argc, argv, &path);
 	get_cmd(&path, argc, argv);
-	
+		
 	int i = 0;
 	int	j = 0;
 	while (path.cmd[i])
