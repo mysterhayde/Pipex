@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:46:36 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/20 11:27:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:02:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static char	*get_binary(t_path *path, char *cmd)
 			if (access(bin, X_OK) >= 0)
 				break ;
 			else
-				show_error("invalid permission to access binary");
+				show_error(path, "invalid permission to access binary");
 		}
 		free(bin);
 	}
 	if (!path->path[i])
-		show_error("Cannot find binary");
+		show_error(path, "Cannot find binary");
 	return (bin);
 }
 
@@ -48,21 +48,21 @@ void	get_cmd(t_path *path, int argc, char **argv)
 	while (i < argc - 3)
 	{
 		if (!path || !path->cmd)
-			show_error("invalid struct");
+			show_error(path, "invalid struct");
 		path->cmd[i] = ft_split(argv[i + 2], ' ');
 		if (!path->cmd[i])
-			show_error("Malloc path->cmd failed");
+			show_error(path, "Malloc path->cmd failed");
 		path->binary[i] = get_binary(path, path->cmd[i][0]);
 		i++;
 	}
 	path->cmd[i] = NULL;
 }
 
-char	**get_path(char **envp, char **argv, int argc)
+char	**get_path(t_path *path, char **envp, char **argv, int argc)
 {
 	int		i;
 	char	*env;
-	char	**path;
+	char	**paths;
 
 	i = 0;
 	while (envp[i])
@@ -72,9 +72,9 @@ char	**get_path(char **envp, char **argv, int argc)
 		i++;	
 	}
 	if (!env)
-		show_error("Cannot find PATH in env");
+		show_error(path, "Cannot find PATH in env");
 	env += 5;
-	path = ft_split(env, ':');
-	return (path);
+	paths = ft_split(env, ':');
+	return (paths);
 }
 

@@ -6,17 +6,43 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/20 18:17:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:24:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	show_error(char *str)
+static void	free_struct(t_path *path)
+{
+	int	j;
+	int	i;
+
+	i = 0;
+	j = 0;
+	while (path->path[i])
+		free(path->path[i++]);
+	free(path->path);
+	i = 0;
+	free(path->cmd);
+	while(path->binary[i])
+		free(path->binary[i++]);
+	free(path->binary);
+	i = 0;
+	while(path->cmd[j])
+	{
+		while(path->cmd[j][i])
+			free(path->cmd[j][i++]);
+		i = 0;
+		j++;
+	}
+}
+
+void	show_error(t_path *path, char *str)
 {
 	ft_putendl_fd(COLOR_RED"Error", 2);
 	perror(str);
 	ft_putendl_fd(COLOR_RESET, 2);
+	free_struct(path);
 	exit(EXIT_FAILURE);
 }
 
@@ -30,27 +56,27 @@ static void	check_files(int argc, char **argv, t_path *path)
 	i = 0;
 	j = 0;
 	if (access(argv[1], F_OK | R_OK) == -1)
-		show_error("Cannot open input file");
+		show_error(path, "Cannot open input file");
 	if (access(argv[argc - 1], F_OK | W_OK) == -1)
-		show_error("Cannot open output file");
+		show_error(path, "Cannot open output file");
 	path->fd_2 = open("output.txt", O_WRONLY);
 	if (path->fd_2 == -1)
-		show_error("Open fd_2 failed");
+		show_error(path, "Open fd_2 failed");
 	path->fd_1 = open("input.txt", O_RDONLY);
 	if (path->fd_1 == -1)
-		show_error("Open fd_1 failed");
+		show_error(path, "Open fd_1 failed");
 }
 
 static void	init_struct(t_path *path, int argc, char **argv, char **envp)
 {
-	path->path = get_path(envp, argv, argc);
+	path->path = get_path(path, envp, argv, argc);
 	path->binary = malloc(sizeof(char * ) * argc - 2);
 	if (!path->binary)
-		show_error("Malloc path->binary failed");
+		show_error(path, "Malloc path->binary failed");
 	path->binary[argc - 3] = NULL;
 	path->cmd = malloc(sizeof(char *) * (argc - 2));
 	if (!path->cmd)
-		show_error("Malloc path->cmd failed");
+		show_error(path, "Malloc path->cmd failed");
 	path->cmd[argc - 3] = NULL;
 	path->file_1 = argv[1];
 	path->file_2 = argv[argc - 1];
@@ -83,5 +109,6 @@ int main(int argc, char **argv, char **envp)
 		i++;
 	}
 	pipex(&path);
+	free_struct(&path);
 	return (0);
 }
