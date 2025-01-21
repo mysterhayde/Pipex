@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/20 18:17:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:59:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 #include "../libft/libft.h"
+#include <sys/wait.h>
 
 typedef struct s_path
 {
@@ -28,8 +29,8 @@ typedef struct s_path
 }	t_path;
 
 void	pipex(t_path *path);
-void	show_error(char *str);
+void	show_error(t_path *path, char *str);
 void	get_cmd(t_path *path, int argc, char **argv);
-char	**get_path(char **envp, char **argv, int argc);
+char	**get_path(t_path *path, char **envp, char **argv, int argc);
 
 #endif
