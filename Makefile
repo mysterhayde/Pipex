@@ -6,6 +6,8 @@ SRC_DIR	= Sources/
 SRC		= main.c \
 		  binary.c \
 		  pipex.c	\
+		  init_struct.c \
+		  free_struct.c 
 
 SOURCES	= $(addprefix $(SRC_DIR),$(SRC))
 

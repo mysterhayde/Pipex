@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:21:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/21 13:49:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:50:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	pipex(t_path *path)
 		child_patern(path, pipe_fd);
 	else
 		parent_patern(path, pipe_fd);
+	close (pipe_fd[0]);
+	close (pipe_fd[1]);
 	return ;
 }
