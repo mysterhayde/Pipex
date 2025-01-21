@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/21 16:15:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:27:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	show_error(t_path *path, char *str)
 
 static void	check_files(int argc, char **argv, t_path *path)
 {
-	unlink(path->file_2);
 	path->fd_1 = open(path->file_1, O_RDONLY);
 	if (path->fd_1 == -1)
 		show_error(path, "Open fd_1 failed");
