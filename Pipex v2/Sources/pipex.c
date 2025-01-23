@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:21:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/22 16:52:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:49:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	child_patern(t_path *path, int pipe_fd[2])
 {
 	close(pipe_fd[0]);
 	if (dup2(path->fd_1, STDIN_FILENO) == -1)
-			show_error(path, "dup2 child failed");
+		show_error(path, "dup2 child failed");
 	if (dup2(pipe_fd[1], STDOUT_FILENO) == -1)
 		show_error(path, "dup2 child failed");
 	close(pipe_fd[1]);
