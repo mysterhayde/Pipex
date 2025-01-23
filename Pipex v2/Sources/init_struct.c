@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:34:23 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/22 15:14:31 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:11:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	init_struct(t_path *path, int argc, char **argv, int param)
 		load_file_1(path, argc, argv);
 	else
 		load_here_foc(path, argc, argv);
+	path->bin
 }
