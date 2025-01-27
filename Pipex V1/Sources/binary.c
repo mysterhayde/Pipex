@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:46:36 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 09:58:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:10:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static char	*get_binary(t_path *path, char *cmd)
 {
-	int 	i;
+	int		i;
 	char	*bin;
 	char	*tmp;
 
 	i = 0;
-	while(path->path[i])
+	while (path->path[i])
 	{
 		tmp = ft_strjoin(path->path[i++], "/");
 		bin = ft_strjoin(tmp, cmd);
@@ -68,9 +68,10 @@ char	**get_path(t_path *path, char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		if ((env = ft_strnstr(envp[i], "PATH=", 5)) != NULL)
-			break;
-		i++;	
+		env = ft_strnstr(envp[i], "PATH=", 5);
+		if (env != NULL)
+			break ;
+		i++;
 	}
 	if (!env)
 		show_error(path, "Cannot find PATH in env");
@@ -78,4 +79,3 @@ char	**get_path(t_path *path, char **envp)
 	paths = ft_split(env, ':');
 	return (paths);
 }
-

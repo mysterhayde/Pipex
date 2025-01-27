@@ -6,15 +6,15 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 09:59:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:12:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-#include "../libft/libft.h"
-#include <sys/wait.h>
+# include "../libft/libft.h"
+# include <sys/wait.h>
 
 typedef struct s_path
 {

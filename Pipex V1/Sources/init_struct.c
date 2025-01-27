@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:34:23 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 09:58:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:10:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_struct(t_path *path, int argc, char **argv)
 	path->fd_2 = open(path->file_2, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (path->fd_2 == -1)
 		show_error(path, "Open fd_2 failed");
-	path->binary = malloc(sizeof(char * ) * argc - 2);
+	path->binary = malloc(sizeof(char *) * argc - 2);
 	if (!path->binary)
 		show_error(path, "Malloc path->binary failed");
 	path->cmd = malloc(sizeof(char *) * (argc - 2));
