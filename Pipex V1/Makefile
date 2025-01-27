@@ -1,6 +1,6 @@
 NAME	= pipex
 CC		= gcc
-CFLAGS	= #-Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 
 SRC_DIR	= Sources/
 SRC		= main.c \
