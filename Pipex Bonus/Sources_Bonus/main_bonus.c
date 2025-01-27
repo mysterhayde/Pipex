@@ -6,7 +6,7 @@
 /*   By: hayden <hayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 23:57:14 by hayden           ###   ########.fr       */
+/*   Updated: 2025/01/28 00:08:27 by hayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ static void	init_struct(t_path *path, int argc)
 
 void	check_args(t_path *path, int argc, char **argv)
 {
-	if (argc < 5 + path->here_doc)
-	{
-		ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
-		exit(EXIT_FAILURE);
-	}
 	if (path->here_doc == 0)
 	{
 		path->fd_1 = open(argv[1], O_RDONLY);
@@ -81,6 +76,11 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_path	path;
 
+	if (argc < 5)
+	{
+		ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
+		exit(EXIT_FAILURE);
+	}
 	here_docs(&path, argv, argc);
 	init_struct(&path, argc);
 	check_args(&path, argc, argv);
