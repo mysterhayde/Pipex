@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 17:31:59 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:05:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 
 typedef struct s_path
 {
-	char	**path;
 	char	***cmd;
+	char	**path;
 	char	**binary;
+	char	*limiter;
 	int		fd_1;
 	int		fd_2;
 	int		cmd_nbr;
@@ -28,8 +29,8 @@ typedef struct s_path
 	int		here_doc;
 }	t_path;
 
-void	pipex(t_path *path);
 void	free_struct(t_path *path);
+void	pipex(t_path *path, char **argv);
 void	get_cmd(t_path *path, char **argv);
 void	show_error(t_path *path, char *str);
 
