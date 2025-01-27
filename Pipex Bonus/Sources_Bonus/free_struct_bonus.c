@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_struct_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hayden <hayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 16:10:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 18:22:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 23:35:59 by hayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	free_struct(t_path *path)
 		free_tab(path->binary);
 	while (path->cmd[i])
 		free_tab(path->cmd[i++]);
+	free(path->cmd);
 	if (path->fd_1 > 0)
 		close(path->fd_1);
 	if (path->fd_2 > 0)
