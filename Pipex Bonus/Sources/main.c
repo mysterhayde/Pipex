@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hayden <hayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 17:13:08 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:07:04 by hayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	show_error(t_path *path, char *str)
 
 void	check_args(t_path *path, int argc, char **argv)
 {
-	if (argc < 5)
+	if (argc != 5)
 	{
-		ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
+		ft_putendl_fd(COLOR_RED"Wrong args numbers"COLOR_RESET, 2);
 		exit(EXIT_FAILURE);
 	}
 	path->fd_1 = open(argv[1], O_RDONLY);
@@ -61,20 +61,6 @@ int	main(int argc, char **argv, char **envp)
 	check_args(&path, argc, argv);
 	path.path = get_all_path(&path, argc, argv, envp);
 	get_cmd(&path, argv);
-	
-	int	i = 0;
-	int j = 0;
-	while(path.cmd[i])
-	{
-		while(path.cmd[i][j])
-		{
-			printf("cmd[%d][%d] = %s\n", i, j, path.cmd[i][j]);
-			j++;
-		}
-		j = 0;
-		printf("binary[%d] = %s\n", i, path.binary[i]);
-		i++;
-	}
 	pipex(&path);
 	exit(EXIT_SUCCESS);
 }
