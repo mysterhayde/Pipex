@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hayden <hayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 18:38:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 23:57:14 by hayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_args(t_path *path, int argc, char **argv)
 	}
 	else
 	{
-		path->fd_2 = open(argv[argc - 1], O_WRONLY | O_CREAT, 0644);
+		path->fd_2 = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 		if (path->fd_2 == -1)
 			show_error(path, "Open fd_2 failed");
 		path->limiter = argv[2];
@@ -83,7 +83,6 @@ int	main(int argc, char **argv, char **envp)
 
 	here_docs(&path, argv, argc);
 	init_struct(&path, argc);
-	printf("%d\n", path.here_doc);
 	check_args(&path, argc, argv);
 	path.path = get_all_path(&path, argc, argv, envp);
 	get_cmd(&path, argv);
