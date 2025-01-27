@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 16:46:36 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 14:47:51 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/01/22 19:32:27 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/01/27 16:48:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*get_binary(t_path *path, char *cmd)
 	{
 		tmp = ft_strjoin(path->path[i++], "/");
 		bin = ft_strjoin(tmp, cmd);
-		free(tmp);
+		safe_free((void *) &tmp);
 		if (access(bin, F_OK) >= 0)
 		{
 			if (access(bin, X_OK) >= 0)
@@ -31,23 +31,23 @@ static char	*get_binary(t_path *path, char *cmd)
 			else
 				show_error(path, "invalid permission to access binary");
 		}
-		free(bin);
+		safe_free((void *) &bin);
 	}
 	if (!path->path[i])
 		show_error(path, "Cannot find binary");
 	return (bin);
 }
 
-void	get_cmd(t_path *path, int argc, char **argv)
+void	get_cmd(t_path *path, char **argv)
 {
 	int	i;
 
 	i = 0;
-	while (i < argc - 3)
+	while (i < (path->cmd_nbr))
 	{
 		if (!path || !path->cmd)
 			show_error(path, "invalid struct");
-		path->cmd[i] = ft_split(argv[i + 2], ' ');
+		path->cmd[i] = ft_split(argv[i + path->cmd_pos], ' ');
 		if (!path->cmd[i])
 			show_error(path, "Malloc path->cmd failed");
 		path->binary[i] = get_binary(path, path->cmd[i][0]);
@@ -57,7 +57,7 @@ void	get_cmd(t_path *path, int argc, char **argv)
 	path->binary[i] = NULL;
 }
 
-char	**get_path(t_path *path, char **envp)
+char	**get_all_path(t_path *path, int argc, char **argv, char **envp)
 {
 	int		i;
 	char	*env;
@@ -72,8 +72,10 @@ char	**get_path(t_path *path, char **envp)
 		i++;
 	}
 	if (!env)
-		show_error(path, "Cannot find PATH in env");
+		show_error(path, "Cannot find 'PATH'");
 	env += 5;
 	paths = ft_split(env, ':');
+	if (!paths)
+		show_error(path, "Split failed");
 	return (paths);
 }
