@@ -6,11 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:32:27 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/27 18:14:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:21:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 static char	*get_binary(t_path *path, char *cmd)
 {

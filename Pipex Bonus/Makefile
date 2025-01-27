@@ -2,13 +2,20 @@ NAME	= pipex
 CC		= gcc
 CFLAGS	= #-Wall -Werror -Wextra
 
+BNS_DIR	= Sources_Bonus/
+BNS		= main_bonus.c \
+		  pipex_bonus.c \
+		  binary_bonus.c \
+		  free_struct_bonus.c
+BONUS 	= $(addprefix $(BNS_DIR),$(BNS))
+
 SRC_DIR	= Sources/
 SRC		= main.c \
 		  pipex.c \
 		  binary.c \
 		  free_struct.c
-
 SOURCES	= $(addprefix $(SRC_DIR),$(SRC))
+B_OBJ 	= $(BONUS:.c=.o)
 
 OBJ_DIR	= Objects/
 OBJ		= $(SRC:.c=.o)
@@ -34,7 +41,11 @@ $(NAME): $(LIBFT) $(OBJECTS)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(LIBFT) $(B_OBJ)
+	$(CC) $(CFLAGS) $(B_OBJ) -Llibft -lft -o $(NAME)
+	echo "$(GREEN)$(NAME) compiled$(RESET)"
 clean:
+	rm -f Sources_Bonus/*.o
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C libft clean
 
@@ -43,5 +54,6 @@ fclean: clean
 	rm -f libft/libft.a
 
 re: fclean all
+
 .SILENT:
 .PHONY: all clean fclean re
