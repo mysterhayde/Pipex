@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:23:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/22 15:05:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:53:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,8 @@ int	main(int argc, char **argv, char **envp)
 		ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
 		exit(EXIT_FAILURE);
 	}
-	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-	{
-		if (argc < 6)
-		{
-			ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
-			exit(EXIT_FAILURE);
-		}
-		init_struct(&path, argc, argv, 1);
-	}
-	else
-		init_struct(&path, argc, argv, 0);
-	path.path = get_path(&path, envp, argv, argc);
+	init_struct(&path, argc, argv);
+	path.path = get_path(&path, envp, argc);
 	get_cmd(&path, argc, argv);
 	pipex(&path);
 	free_struct(&path);

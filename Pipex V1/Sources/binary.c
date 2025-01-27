@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:46:36 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/21 12:02:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:58:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ void	get_cmd(t_path *path, int argc, char **argv)
 		i++;
 	}
 	path->cmd[i] = NULL;
+	path->binary[i] = NULL;
 }
 
-char	**get_path(t_path *path, char **envp, char **argv, int argc)
+char	**get_path(t_path *path, char **envp)
 {
 	int		i;
 	char	*env;

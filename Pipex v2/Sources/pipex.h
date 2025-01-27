@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/22 14:11:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:58:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	pipex(t_path *path);
 void	free_struct(t_path *path);
 void	show_error(t_path *path, char *str);
 void	get_cmd(t_path *path, int argc, char **argv);
-void	init_struct(t_path *path, int argc, char **argv, int param);
-char	**get_path(t_path *path, char **envp, char **argv, int argc);
+void	init_struct(t_path *path, int argc, char **argv);
+char	**get_path(t_path *path, char **envp, int argc)
 
 #endif
