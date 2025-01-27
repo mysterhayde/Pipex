@@ -6,24 +6,24 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:21:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/21 16:50:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:26:09 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void parent_patern(t_path *path, int pipe_fd[2])
+static void	parent_patern(t_path *path, int pipe_fd[2])
 {
-	int status;
+	int	bin;
 
+	bin = path->bin + 1;
 	close(pipe_fd[1]);
 	if (dup2(pipe_fd[0], STDIN_FILENO) == -1)
 		show_error(path, "Dup2 parent failed");
 	if (dup2(path->fd_2, STDOUT_FILENO) == -1)
 		show_error(path, "Dup2 parent failed");
 	close(pipe_fd[0]);
-	waitpid(-1, &status, 0);
-	if (execve(path->binary[path->bin + 1], path->cmd[path->bin + 1], NULL) == -1)
+	if (execve(path->binary[bin], path->cmd[bin], NULL) == -1)
 		show_error(path, "Execve parent failed");
 	return ;
 }
@@ -45,7 +45,7 @@ void	pipex(t_path *path)
 {
 	int		pipe_fd[2];
 	pid_t	pid;
-	
+
 	if (pipe(pipe_fd) == -1)
 		show_error(path, "Pipe failed");
 	pid = fork();
@@ -57,5 +57,6 @@ void	pipex(t_path *path)
 		parent_patern(path, pipe_fd);
 	close (pipe_fd[0]);
 	close (pipe_fd[1]);
+	printf("hello");
 	return ;
 }
