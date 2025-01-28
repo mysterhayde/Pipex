@@ -1,5 +1,5 @@
 NAME	= pipex
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
 
 BNS_DIR	= Sources_Bonus/
