@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/28 13:39:46 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:30:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int	main(int argc, char **argv, char **envp)
 	path.path = get_all_path(&path, envp);
 	get_cmd(&path, argv);
 	pipex(&path);
+	free_struct(&path);
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/28 13:43:46 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:41:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,17 @@ static void	check_args(t_path *path, int argc, char **argv)
 
 static void	here_docs(t_path *path, char **argv, int argc)
 {
-	if (argc < 2)
-	{
-		ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
-		exit(EXIT_FAILURE);
-	}
-	if (ft_strncmp(argv[1], "here_doc", 3) == 0)
+	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
 		path->here_doc = 1;
 	else
+	{
+		if (argc < 6)
+		{
+			ft_putendl_fd(COLOR_RED"Not enough args"COLOR_RESET, 2);
+			exit(EXIT_FAILURE);
+		}
 		path->here_doc = 0;
+	}
 }
 
 int	main(int argc, char **argv, char **envp)
