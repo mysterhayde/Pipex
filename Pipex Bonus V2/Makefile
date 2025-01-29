@@ -1,6 +1,6 @@
 NAME	= pipex
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -g
+CFLAGS	= -Wall -Werror -Wextra
 
 BNS_DIR	= Sources_Bonus/
 BNS		= main_bonus.c \
