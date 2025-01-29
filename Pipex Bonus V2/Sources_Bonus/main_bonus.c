@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/28 14:41:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:32:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static void	init_struct(t_path *path, int argc)
 	path->cmd_pos = (2 + path->here_doc);
 	path->fd_1 = 0;
 	path->fd_2 = 0;
-	path->cmd = malloc(sizeof(char **) * (path->cmd_nbr + 1));
+	path->cmd = ft_calloc(sizeof(char **), (path->cmd_nbr + 1));
 	if (!path->cmd)
 		show_error(path, "Malloc path->cmd failed");
-	path->binary = malloc(sizeof(char *) * (path->cmd_nbr + 1));
+	path->binary = ft_calloc(sizeof(char *), (path->cmd_nbr + 1));
 	if (!path->binary)
 		show_error(path, "Malloc path->binary failed");
 }
