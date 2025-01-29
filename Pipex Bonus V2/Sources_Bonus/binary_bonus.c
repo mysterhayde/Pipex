@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:32:27 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/28 13:38:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:52:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@ static char	*get_binary(t_path *path, char *cmd)
 	while (path->path[i])
 	{
 		tmp = ft_strjoin(path->path[i++], "/");
+		if (!tmp)
+			show_error(path, "Malloc failed");
 		bin = ft_strjoin(tmp, cmd);
+		if (!bin)
+			show_error(path, "Malloc failed");
 		safe_free((void *) &tmp);
 		if (access(bin, F_OK) >= 0)
 		{
 			if (access(bin, X_OK) >= 0)
-				break ;
+				return (bin);
 			else
 				show_error(path, "invalid permission to access binary");
 		}
 		safe_free((void *) &bin);
 	}
-	if (!path->path[i])
-		show_error(path, "Cannot find binary");
-	return (bin);
+	show_error(path, "Cannot find binary");
 }
 
 void	get_cmd(t_path *path, char **argv)

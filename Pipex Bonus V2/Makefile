@@ -1,6 +1,6 @@
 NAME	= pipex
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g
 
 BNS_DIR	= Sources_Bonus/
 BNS		= main_bonus.c \
@@ -36,14 +36,14 @@ $(OBJ_DIR):
 
 $(NAME): $(LIBFT) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -Llibft -lft -o $(NAME)
-	echo "$(GREEN)$(NAME) compiled$(RESET)"
+	echo -n "$(GREEN)$(NAME) compiled$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(LIBFT) $(B_OBJ)
 	$(CC) $(CFLAGS) $(B_OBJ) -Llibft -lft -o $(NAME)
-	echo "$(GREEN)$(NAME) compiled$(RESET)"
+	echo -n "$(GREEN)$(NAME) compiled$(RESET)"
 clean:
 	rm -f Sources_Bonus/*.o
 	rm -rf $(OBJ_DIR)
