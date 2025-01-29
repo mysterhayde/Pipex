@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:32:27 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/29 18:52:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:33:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static char	*get_binary(t_path *path, char *cmd)
 		safe_free((void *) &bin);
 	}
 	show_error(path, "Cannot find binary");
+	return (NULL);
 }
 
 void	get_cmd(t_path *path, char **argv)
