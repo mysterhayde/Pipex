@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:12:23 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/29 19:08:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/01/30 09:41:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,16 @@ static void	children_partern_2(t_path *path, int *pipefd)
 		show_error(path, "execve failed");
 }
 
-static void parent_partern(t_path *path, int *pipefd, pid_t pid_1, pid_t pid_2)
+static void	parent_partern(t_path *path, int *pipefd, pid_t pid_1, pid_t pid_2)
 {
-	int status_1;
-	int status_2;
-	
+	int	status_1;
+	int	status_2;
+
 	close(pipefd[0]);
 	close(pipefd[1]);
-
-    waitpid(pid_1, &status_1, 0);
+	waitpid(pid_1, &status_1, 0);
 	waitpid(pid_2, &status_2, 0);
-    if (WIFEXITED(status_1) && WEXITSTATUS(status_1) != 0)
+	if (WIFEXITED(status_1) && WEXITSTATUS(status_1) != 0)
 		show_error(path, "Error in children 1");
 	if (WIFEXITED(status_2) && WEXITSTATUS(status_2) != 0)
 		show_error(path, "Error in children 2");
