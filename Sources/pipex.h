@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/01/28 13:43:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:41:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
+#ifndef PIPEX_H
+# define PIPEX_H
+
+
 
 # include "../libft/libft.h"
 # include <sys/wait.h>
 
+int g_sssignal = 0;
 typedef struct s_path
 {
-	char	***cmd;
 	char	**path;
+	char	***cmd;
 	char	**binary;
-	char	*limiter;
 	int		fd_1;
 	int		fd_2;
 	int		cmd_nbr;
 	int		cmd_pos;
-	int		here_doc;
 }	t_path;
 
 void	pipex(t_path *path);
