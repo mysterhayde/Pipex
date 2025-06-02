@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:22:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/02/04 15:41:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/05/31 21:11:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../libft/libft.h"
 # include <sys/wait.h>
 
-int g_sssignal = 0;
 typedef struct s_path
 {
 	char	**path;

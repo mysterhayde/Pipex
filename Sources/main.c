@@ -6,12 +6,10 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:06:11 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/02/03 11:50:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/05/31 21:11:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int g_ssignal = 0;
-int g_signal = 0;
 
 #include "pipex.h"
 
